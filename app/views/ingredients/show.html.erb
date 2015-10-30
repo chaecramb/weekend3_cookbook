@@ -1,0 +1,18 @@
+<p>Ingredient:
+
+  <%= @ingredient.name %>
+  </p>
+<p>
+  Recipes:
+  <ul>
+  <% @ingredient.recipes.each do |recipe| %>
+  <li>
+  <%= link_to recipe.title, recipe %>
+  </li>
+  <% end %>
+  </ul>
+</p>
+
+<%= link_to 'Edit', edit_ingredient_path(@ingredient) %>
+<%= link_to 'Delete', @ingredient, method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= link_to 'Back', ingredients_path %>

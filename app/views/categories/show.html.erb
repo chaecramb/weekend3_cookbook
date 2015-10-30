@@ -1,0 +1,15 @@
+<p>Category:
+
+  <%= @category.name %>
+  </p>
+<p>
+  Recipes:
+  <% @category.recipes.each do |recipe| %>
+  <br>
+  <%= link_to recipe.title, recipe %>
+  <% end %>
+</p>
+
+<%= link_to 'Edit', edit_category_path(@category) %>
+<%= link_to 'Delete', @category, method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= link_to 'Back', categories_path %>
