@@ -1,18 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>RailsCookbook</title>
+  <title>Cookbook</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
+
 <body>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand text-muted" href="/">Cookbook</a>
+      <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav pull-right">
+          <li class='active'><%= link_to "Recipes", recipes_path %></li>
+          <li><%= link_to "Categories", categories_path %></li>
+          <li><%= link_to "Ingredients", ingredients_path %></li>
+        </ul>
+      </div>
+    </div>  
+  </nav>
 
-<%= link_to "Recipes", recipes_path %>
-<%= link_to "Categories", categories_path %>
-<%= link_to "Ingredients", ingredients_path %>
-
-<%= yield %>
+  <%= yield %>
 
 </body>
 </html>
+
