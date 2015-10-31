@@ -5,9 +5,27 @@
   <section class="row">
     <% @categories.each do |category| %>
       <div class="col-sm-4">
+        <% @category = category %>
         <%= category.name %>
         <%= link_to 'show', category %>
-        <%= link_to 'edit', edit_category_path(category) %>
+        <%= link_to 'edit', "#editCategory", 'data-toggle' => 'modal' %>
+
+        <!-- Modal -->
+              <div class="modal fade" id='editCategory' >
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                      <h4 class="modal-title">Edit category</h4>
+                    </div>
+                    <div class="modal-body">
+                      <%= render 'categories/form', category: @category %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        <!-- End Modal -->        
+
         <%= link_to 'delete', category, method: :delete, data: { confirm: 'Are you sure?' } %>
       </div>
     <% end %>
