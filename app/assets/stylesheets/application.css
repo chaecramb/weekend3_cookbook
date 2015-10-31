@@ -54,3 +54,11 @@
  .carousel-indicators li {
   border-color: #222;
  }
+
+/* Forms */
+
+.checkbox-group {
+  margin: 0px 7px 0px 7px;
+  display: inline;
+}
+

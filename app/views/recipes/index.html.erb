@@ -1,20 +1,79 @@
+<div class="jumbotron">
+  <h1>Recipes</h1>
+  <a class="btn btn-default btn-lg" data-toggle="modal" href="#newRecipe">Add new recipe</a>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="newRecipe">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Add recipe</h4>
+      </div>
+      <div class="modal-body">
+
+
+        <%= form_for(Recipe.new, html: {class: 'form'}) do |f| %>
+
+        <div class="form-group">
+          <%= f.label :title %><br>
+          <%= f.text_field :title, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :instructions %><br>
+          <%= f.text_area :instructions, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          Ingredients:
+          <br>
+          <% Ingredient.all.each do |ingredient| %>
+          <div class="checkbox-group">
+            <%= f.check_box :ingredients, { :multiple => true }, ingredient.name, unchecked_value = nil %> 
+            <%= label :ingredients, ingredient.name %>
+          </div>
+          <% end %>
+        </div>
+        <div class="form-group">
+          <%= f.label :published_on %><br>
+          <%= f.date_select :published_on %>
+        </div>
+        <div class="form-group">
+          <%= f.label :category_id %><br>
+          <%#= f.number_field :category_id %>
+          <%= f.select :category_id, Category.all.map {|c| [c.name, c.id] } %>
+        </div>
+        <div>
+          <%= f.submit %>
+        </div>
+        <% end %>
+
+
+
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Modal -->
+
 <main class="container">
   <section class="row">
-      <h1>Recipes</h1>
+    <h1>Recipes</h1>
   </section>
   <section class="row">
     <% @recipes.each do |recipe| %>
-      <div class="col-sm-4">
-        <%= recipe.title %>
-        <%= link_to 'show', recipe %>
-        <%= link_to 'edit', edit_recipe_path(recipe) %>
-        <%= link_to 'delete', recipe, method: :delete, data: { confirm: 'Are you sure?' } %>
-      </div>
+    <div class="col-sm-4">
+      <%= recipe.title %>
+      <%= link_to 'show', recipe %>
+      <%= link_to 'edit', edit_recipe_path(recipe) %>
+      <%= link_to 'delete', recipe, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </div>
     <% end %>
     <br>
   </section>
-  <section class="row">
-    <%= link_to 'add recipe', new_recipe_path %>
-  </section>
+<!--   <section class="row">
+ -->  <%#= link_to 'add recipe', new_recipe_path %>
+<!--   </section> -->
 </main>
 

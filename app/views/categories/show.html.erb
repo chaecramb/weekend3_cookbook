@@ -1,15 +1,28 @@
-<p>Category:
+<div class="jumbotron">
+  <h1><%= @category.name %></h1>
+  <p class="lead">Filter by ingredients</p>
+  <p class="btn-group">
+    <a class="btn btn-success btn-lg" href="#">Filter</a>
+  </p> 
+</div>
 
-  <%= @category.name %>
-  </p>
-<p>
-  Recipes:
-  <% @category.recipes.each do |recipe| %>
-  <br>
-  <%= link_to recipe.title, recipe %>
-  <% end %>
-</p>
+<main class="container">
+  <section class="row">
+    <%= link_to 'Edit category', edit_category_path(@category) %>
+    <%= link_to 'Delete category', @category, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%= link_to 'Back', categories_path %>
+  </section>
+  <section class="row">
+    <h3>Recipes</h3>
+  </section>
+  <section class="row">
+    <% @category.recipes.each do |recipe| %>
+    <div class="col-sm-4">
+      <%= link_to recipe.title, recipe %>
+    </div>
+    <% end %>
+  </section>
+</main>
 
-<%= link_to 'Edit', edit_category_path(@category) %>
-<%= link_to 'Delete', @category, method: :delete, data: { confirm: 'Are you sure?' } %>
-<%= link_to 'Back', categories_path %>
+
+

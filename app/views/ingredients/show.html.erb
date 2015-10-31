@@ -1,18 +1,24 @@
-<p>Ingredient:
+<div class="jumbotron">
+  <h1><%= @ingredient.name %></h1>
+</div>
 
-  <%= @ingredient.name %>
-  </p>
-<p>
-  Recipes:
-  <ul>
-  <% @ingredient.recipes.each do |recipe| %>
-  <li>
-  <%= link_to recipe.title, recipe %>
-  </li>
-  <% end %>
-  </ul>
-</p>
+<main class="container">
+  <section class="row">
+    <%= link_to 'Edit ingredient', edit_ingredient_path(@ingredient) %>
+    <%= link_to 'Delete ingredient', @ingredient, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%= link_to 'Back', ingredients_path %>
+  </section>
+  <section class="row">
+    <h3>Recipes</h3>
+  </section>
+  <section class="row">
+    <% @ingredient.recipes.each do |recipe| %>
+    <div class="col-sm-4">
+      <%= link_to recipe.title, recipe %>
+    </div>
+    <% end %>
+  </section>
+</main>
 
-<%= link_to 'Edit', edit_ingredient_path(@ingredient) %>
-<%= link_to 'Delete', @ingredient, method: :delete, data: { confirm: 'Are you sure?' } %>
-<%= link_to 'Back', ingredients_path %>
+
+

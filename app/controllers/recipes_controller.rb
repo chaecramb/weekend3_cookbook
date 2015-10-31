@@ -24,7 +24,6 @@ class RecipesController < ApplicationController
   # POST /recipes
   # POST /recipes.json
   def create
-    binding.pry
     @recipe = Recipe.new(recipe_params)
     params['recipe']['ingredients'].each do |ingredient_name|
       @recipe.ingredients << Ingredient.find_by(name: ingredient_name)

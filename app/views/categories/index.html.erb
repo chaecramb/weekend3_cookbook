@@ -1,54 +1,33 @@
-<!-- Carousel -->
-<div id="myCarousel" class="carousel slide jumbotron">
-  <div class="container">
-    <ol class="carousel-indicators">
-      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-      <li data-target="#myCarousel" data-slide-to="1"></li>
-      <li data-target="#myCarousel" data-slide-to="2"></li>
-    </ol>
-    <div class="carousel-inner">
-      <div class="item active">
-        <h1>Quark and blueberries</h1>
-        <p class="lead">The perfect supper</p>
-        <p><a class="btn btn-success btn-lg" href="#">Check out the recipe!</a>           
+<div class="jumbotron">
+  <h1>Category</h1>
+  <a class="btn btn-default btn-lg" data-toggle="modal" href="#newCategory">Add new Category</a>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="newCategory">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Add category</h4>
       </div>
-      <div class="item">
-        <h1>Scrambled eggs</h1>
-        <p class="lead">Eggs for the win</p>
-        <p><a class="btn btn-success btn-lg" href="#">Check out the recipe!</a>      
+      <div class="modal-body">
+
+      <%= form_for(Category.new, html: {class: 'form'}) do |f| %>
+          <div class="form-group">
+            <%= f.label :name %><br>
+            <%= f.text_field :name, class: 'form-control'  %>
+          </div>
+          <div>
+            <%= f.submit %>
+          </div>
+        <% end %>
+
       </div>
-      <div class="item">
-        <h1>Apple crumble</h1>
-        <p class="lead">Delicous summer pudding</p>
-        <p><a class="btn btn-success btn-lg" href="#">Check out the recipe!</a></p>           
-      </div>
-    </div>     
+    </div>
   </div>
-  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-    <span class="icon-prev"></span>
-  </a>
-  <a class="right carousel-control" href="#myCarousel" data-slide="next">
-    <span class="icon-next"></span>
-  </a>      
-</div> <!-- End Carousel -->
+</div>
+<!-- End Modal -->
 
-
-<main id="categories" class="container">
-  <section class="row">
-      <h1>Categories</h1>
-  </section>
-  <section class="row">
-    <% @categories.each do |category| %>
-      <div class="col-sm-4">
-        <%= category.name %>
-        <%= link_to 'show', category %>
-        <%= link_to 'edit', edit_category_path(category) %>
-        <%= link_to 'delete', category, method: :delete, data: { confirm: 'Are you sure?' } %>
-      </div>
-    <% end %>
-    <br>
-  </section>
-  <section class="row">
-    <%= link_to 'add category', new_category_path %>
-  </section>
-</main>
+<%= render partial: 'categories' %>
