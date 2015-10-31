@@ -67,6 +67,30 @@
       <%= recipe.title %>
       <%= link_to 'show', recipe %>
       <%= link_to 'edit', edit_recipe_path(recipe) %>
+      
+
+
+
+      <%= link_to 'edit (modal)', "#editRecipe", 'data-toggle' => 'modal' %>
+
+      <div class="modal fade" id='editRecipe' >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 class="modal-title">Edit recipe</h4>
+            </div>
+            <div class="modal-body">
+              <%= render 'recipes/form', recipe: recipe %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
       <%= link_to 'delete', recipe, method: :delete, data: { confirm: 'Are you sure?' } %>
     </div>
     <% end %>
