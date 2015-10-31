@@ -29,10 +29,10 @@
       <% @recipe = recipe %>
       <%= recipe.title %>
       <%= link_to 'show', recipe %>
-      <%= link_to 'edit', "#editRecipe", 'data-toggle' => 'modal' %>
+      <%= link_to 'edit', "#editRecipe_#{recipe.id}", 'data-toggle' => 'modal' %>
 
 <!-- Modal -->
-      <div class="modal fade" id='editRecipe' >
+      <div class="modal fade" id="editRecipe_<%= recipe.id%>" >
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">

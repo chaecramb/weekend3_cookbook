@@ -1,9 +1,9 @@
-<%= form_for(@ingredient) do |f| %>
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+<%= form_for(@ingredient, html: {class: 'form'}) do |f| %>
+    <div class="form-group">
+      <%= f.label :name %><br>
+      <%= f.text_field :name, class: 'form-control'  %>
+    </div>
+    <div>
+      <%= f.submit %>
+    </div>
+  <% end %>
