@@ -1,29 +1,20 @@
-<h1>Recipes</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Instructions</th>
-      <th>Published on</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<main class="container">
+  <section class="row">
+      <h1>Recipes</h1>
+  </section>
+  <section class="row">
     <% @recipes.each do |recipe| %>
-      <tr>
-        <td><%= recipe.title %></td>
-        <td><%= recipe.instructions %></td>
-        <td><%= recipe.published_on %></td>
-        <td><%= link_to 'show', recipe %></td>
-        <td><%= link_to 'edit', edit_recipe_path(recipe) %></td>
-        <td><%= link_to 'delete', recipe, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <div class="col-sm-4">
+        <%= recipe.title %>
+        <%= link_to 'show', recipe %>
+        <%= link_to 'edit', edit_recipe_path(recipe) %>
+        <%= link_to 'delete', recipe, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </div>
     <% end %>
-  </tbody>
-</table>
+    <br>
+  </section>
+  <section class="row">
+    <%= link_to 'add recipe', new_recipe_path %>
+  </section>
+</main>
 
-<br>
-
-<%= link_to 'add recipe', new_recipe_path %>
