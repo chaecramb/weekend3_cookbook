@@ -44,6 +44,11 @@ class RecipesController < ApplicationController
   # PATCH/PUT /recipes/1
   # PATCH/PUT /recipes/1.json
   def update
+    @recipe.ingredients.clear
+    params['ingredients'].each do |ingredient_name|
+      @recipe.ingredients << Ingredient.find_by(name: ingredient_name)
+    end
+
     respond_to do |format|
       if @recipe.update(recipe_params)
         format.html { redirect_to @recipe, notice: 'Recipe was successfully updated.' }
