@@ -1,4 +1,4 @@
-<div class="jumbotron">
+<div class="jumbotron" id="recipe-jumbotron">
   <h1><%= @recipe.title %></h1>
   <p class="btn-group">
     <%= link_to 'Edit recipe', edit_recipe_path(@recipe), class: 'btn btn-success btn-lg' %>
@@ -7,31 +7,54 @@
   </p>
 </div>
 
+<div id="wrapper">
 
-<p>
-  <strong>Category:</strong>
-  <%= @recipe.category.try(:name)  %>
-</p>
+    <div id="sidebar-wrapper">
+      <p>
+        Ingredients
+        <ul>
+        <% @recipe.ingredients.each do |ingredient| %>
+        <li>
+        <%= link_to ingredient.name, ingredient_path %>
+        </li>
+        <% end %>
+        </ul>
+      </p>
+    </div>
 
-<p>
-  <strong>Instructions:</strong>
-  <%= @recipe.instructions %>
-</p>
+    <div id="page-content-wrapper">
+        <div class="page-content">
+            <div id="recipe-content" class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <ul class="list-inline">
+                          <li>
+                            <strong>Category:</strong>
+                            <%= @recipe.category.try(:name)  %>
+                          </li>
+                          <li>
+                            <strong>Published on:</strong>
+                            <%= @recipe.published_on %>
+                          </li>
+                        </ul>
+                        <p>
+                          <strong>Instructions:</strong>
+                          <br>
+                          <%= @recipe.instructions %>
+                        </p>
 
-<p>
-  <strong>Published on:</strong>
-  <%= @recipe.published_on %>
-</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<p>
-  <strong>Ingredients:</strong>
-  <ul>
-  <% @recipe.ingredients.each do |ingredient| %>
-  <li>
-  <%= link_to ingredient.name, ingredient_path %>
-  </li>
-  <% end %>
-  </ul>
-</p>
+</div>
+
+
+
+
+
+
 
 
