@@ -1,28 +1,48 @@
 <div class="jumbotron">
   <h1><%= @category.name %></h1>
-  <p class="lead">Filter by ingredients</p>
+<!--   <p class="lead">Filter by ingredients</p> -->  
   <p class="btn-group">
-    <a class="btn btn-success btn-lg" href="#">Filter</a>
-  </p> 
+    <%= link_to 'Edit category', edit_category_path(@category), class: 'btn btn-success btn-lg' %>
+    <%= link_to 'Delete', @category, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-success btn-lg' %>
+    <%= link_to 'Back', categories_path, class: 'btn btn-default btn-lg' %>
+
+     <div class="filter">
+      <form action="/categories/<%= @category.id%>" class="navbar-form" role="search">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="filter by ingredient" name="search" id="srch-term">
+            <div class="input-group-btn">
+                <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+            </div>
+        </div>
+      </form>
+    </div> 
+
+  </p>
 </div>
+  
+<% recipes = if params['search'] %>
+  <% @category.recipes.select do |recipe|  %>
+    <% recipe.ingredients.include?(Ingredient.find_by("name ILIKE (?)", "%#{params['search']}%")) %>
+  <% end %>
+<% else %>
+  <% @category.recipes %>
+<% end %>
 
 <main class="container">
   <section class="row">
-    <%= link_to 'Edit category', edit_category_path(@category) %>
-    <%= link_to 'Delete category', @category, method: :delete, data: { confirm: 'Are you sure?' } %>
-    <%= link_to 'Back', categories_path %>
+    <h1>Recipes</h1>
   </section>
   <section class="row">
-    <h3>Recipes</h3>
-  </section>
-  <section class="row">
-    <% @category.recipes.each do |recipe| %>
+    <% recipes.each do |recipe| %>
     <div class="col-sm-4">
       <%= link_to recipe.title, recipe %>
     </div>
     <% end %>
   </section>
 </main>
+
+
+
 
 
 

@@ -129,3 +129,13 @@
 #recipe-content {
   padding-top: 30px;
 }
+
+/* Filters */
+
+.filter {
+  padding-bottom: 12px;
+  margin: 0;
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+}

@@ -4,7 +4,7 @@ class RecipesController < ApplicationController
   # GET /recipes
   # GET /recipes.json
   def index
-    @recipes = Recipe.all
+    @recipes = Recipe.filter(params.slice(:search))
     @recipe = Recipe.new
   end
 
