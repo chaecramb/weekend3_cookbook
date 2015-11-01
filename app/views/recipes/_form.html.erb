@@ -11,7 +11,7 @@
 <div class="form-group">
   Ingredients:
   <br>
-  <% Ingredient.all.each do |ingredient| %>
+  <% Ingredient.order("lower(name) ASC").all.each do |ingredient| %>
   <div class="checkbox-group">
     <%= f.check_box :ingredients, { :multiple => true }, ingredient.name, unchecked_value = nil %> 
     <%= label :ingredients, ingredient.name %>

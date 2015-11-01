@@ -3,7 +3,7 @@
       <h1>Categories</h1>
   </section>
   <section class="row">
-    <% @categories.each do |category| %>
+    <% @categories.order("lower(name) ASC").each do |category| %>
       <div class="col-sm-4">
         <% @category = category %>
         <%= category.name %>

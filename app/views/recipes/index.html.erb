@@ -24,7 +24,7 @@
     <h1>Recipes</h1>
   </section>
   <section class="row">
-    <% @recipes.each do |recipe| %>
+    <% @recipes.order("lower(title) ASC").each do |recipe| %>
     <div class="col-sm-4">
       <% @recipe = recipe %>
       <%= recipe.title %>
