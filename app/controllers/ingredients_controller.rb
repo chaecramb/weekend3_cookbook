@@ -27,8 +27,9 @@ class IngredientsController < ApplicationController
   end
 
   def update
-    Ingredient.find(params[:id]).update(category_params)
-    redirect_to(ingredients_path)
+    ingredient = Ingredient.find(params[:id])
+    ingredient.update(category_params)
+    redirect_to ingredient
   end
 
   private
