@@ -26,8 +26,10 @@ class RecipesController < ApplicationController
   # POST /recipes.json
   def create
     @recipe = Recipe.new(recipe_params)
-    params['ingredients'].each do |ingredient_name|
-      @recipe.ingredients << Ingredient.find_by(name: ingredient_name)
+    if params['ingredients']
+      params['ingredients'].each do |ingredient_name|
+        @recipe.ingredients << Ingredient.find_by(name: ingredient_name)
+      end
     end
 
     respond_to do |format|

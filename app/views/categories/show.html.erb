@@ -36,8 +36,10 @@
 
   </p>
 </div>
+
+
   
-<% recipes = if params['search'] %>
+<% @recipes = if params['search'] %>
   <% @category.recipes.select do |recipe|  %>
     <% recipe.ingredients.include?(Ingredient.find_by("name ILIKE (?)", "%#{params['search']}%")) %>
   <% end %>
@@ -45,18 +47,9 @@
   <% @category.recipes %>
 <% end %>
 
-<main class="container">
-  <section class="row">
-    <h1>Recipes</h1>
-  </section>
-  <section class="row">
-    <% recipes.each do |recipe| %>
-    <div class="col-sm-4">
-      <%= link_to recipe.title, recipe %>
-    </div>
-    <% end %>
-  </section>
-</main>
+<%= render 'recipes/recipes', recipe: @recipes %>
+
+
 
 
 
