@@ -9,7 +9,7 @@ class IngredientsController < ApplicationController
   end
 
   def create
-    Ingredient.create(category_params)
+    Ingredient.create(category_params) unless Ingredient.find_by(category_params)
     redirect_to(ingredients_path)
   end
 
