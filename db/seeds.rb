@@ -83,25 +83,36 @@ Category.create([
 ])
 
 Ingredient.delete_all
-oats = Ingredient.create( :name => "Oats" )
-milk = Ingredient.create( :name => "Milk" )
-eggs = Ingredient.create( :name => "Eggs" )
-apples = Ingredient.create( :name => "Apples" )
-cheese = Ingredient.create( :name => "Cheese" )
-pasta = Ingredient.create( :name => "Pasta" )
-lettuce = Ingredient.create( :name => "Lettuce" )
-tomato = Ingredient.create( :name => "Tomato" )
-cucumber = Ingredient.create( :name => "Cucumber" )
-pumpkin = Ingredient.create( :name => "Pumpkin" )
-bacon = Ingredient.create( :name => "Bacon" )
-biscuits = Ingredient.create( :name => "Biscuits" )
+Ingredient.create( :name => "Oats" )
+Ingredient.create( :name => "Milk" )
+Ingredient.create( :name => "Eggs" )
+Ingredient.create( :name => "Apples" )
+Ingredient.create( :name => "Cheese" )
+Ingredient.create( :name => "Pasta" )
+Ingredient.create( :name => "Lettuce" )
+Ingredient.create( :name => "Tomato" )
+Ingredient.create( :name => "Cucumber" )
+Ingredient.create( :name => "Pumpkin" )
+Ingredient.create( :name => "Bacon" )
+Ingredient.create( :name => "Biscuits" )
 
-Recipe.first.ingredients << oats << milk << apples
-Recipe.first(2).last.ingredients << eggs
-Recipe.first(3).last.ingredients << apples << lettuce << tomato << cucumber
-Recipe.first(4).last.ingredients << cheese << pasta
-Recipe.first(5).last.ingredients << pumpkin
-Recipe.first(6).last.ingredients << pasta << eggs << cheese << bacon
-Recipe.first(7).last.ingredients << apples
-Recipe.last.ingredients << apples << biscuits << oats
+Quantity.create(recipe_id: 1, ingredient_id: 1, quantity: 'one cup')
+Quantity.create(recipe_id: 1, ingredient_id: 2, quantity: '200ml')
+Quantity.create(recipe_id: 2, ingredient_id: 3, quantity: '3')
+Quantity.create(recipe_id: 3, ingredient_id: 7, quantity: 'a bunch')
+Quantity.create(recipe_id: 3, ingredient_id: 8, quantity: '4')
+Quantity.create(recipe_id: 3, ingredient_id: 9, quantity: 'some')
+Quantity.create(recipe_id: 4, ingredient_id: 5, quantity: '40g')
+Quantity.create(recipe_id: 4, ingredient_id: 6, quantity: '100g')
+Quantity.create(recipe_id: 5, ingredient_id: 10, quantity: '100g')
+Quantity.create(recipe_id: 6, ingredient_id: 5, quantity: '20g')
+Quantity.create(recipe_id: 6, ingredient_id: 6, quantity: '100g')
+Quantity.create(recipe_id: 6, ingredient_id: 3, quantity: '1')
+Quantity.create(recipe_id: 6, ingredient_id: 11, quantity: '3 pieces')
+Quantity.create(recipe_id: 7, ingredient_id: 4, quantity: '3')
+Quantity.create(recipe_id: 8, ingredient_id: 4, quantity: '4')
+Quantity.create(recipe_id: 8, ingredient_id: 12, quantity: '200g')
+Quantity.create(recipe_id: 8, ingredient_id: 4, quantity: '50g')
+
+
 

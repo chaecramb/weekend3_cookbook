@@ -84,7 +84,7 @@
   z-index: 1000;
   transition: all 0.4s ease 0s;
   padding-top: 30px;
-  padding-left: 40px;
+  padding-left: 20px;
   color: white;
 }
 
@@ -100,6 +100,10 @@
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+.ingredient-item {
+  padding-left: 20px;
 }
 
 /*@media (max-width:767px) {
@@ -186,6 +190,8 @@
 .edit-container i {
   color: black;
 }
+
+
 
 
 

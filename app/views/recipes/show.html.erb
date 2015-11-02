@@ -32,10 +32,11 @@
     <div id="sidebar-wrapper">
       <p>
         Ingredients
-        <ul>
+        <ul class="ingredient-item">
         <% @recipe.ingredients.each do |ingredient| %>
         <li>
-        <%= link_to ingredient.name, ingredient_path %>
+        <%= link_to "#{ingredient.name}: ", ingredient_path %>
+        <%= ingredient.quantities.where(recipe_id: @recipe.id).pluck(:quantity).first %>
         </li>
         <% end %>
         </ul>
