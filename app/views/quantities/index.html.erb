@@ -1,0 +1,63 @@
+<div class="jumbotron">
+  <h1>Quantities</h1>
+  <p class="btn-group">
+    <%= link_to 'Add new quantity', "#newQuantity", 'data-toggle' => 'modal', class: 'btn btn-default btn-lg' %>
+  </p>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="newQuantity">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Add quantity</h4>
+      </div>
+      <div class="modal-body">
+        <%= render 'quantities/form', quantity: @quantity %>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Modal -->
+
+
+<main class="container">
+  <section class="row">
+      <h1>Quantities</h1>
+  </section>
+  <section class="row">
+    <% @quantities.order("lower(quantity) ASC").each do |quantity| %>
+      <div class="col-sm-4">
+        <% @quantity = quantity %>
+        <%= @quantity.recipe.try(:title) %>
+        <br>
+        <%= @quantity.ingredient.try(:name) %>: 
+        <%= quantity.quantity %>
+        <%= link_to 'show', quantity %>
+
+        <%= link_to 'edit', "#editQuantity_#{quantity.id}", 'data-toggle' => 'modal' %>
+
+        <!-- Modal -->
+              <div class="modal fade" id='editQuantity_<%= quantity.id%>' >
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                      <h4 class="modal-title">Edit quantity</h4>
+                    </div>
+                    <div class="modal-body">
+                      <%= render 'quantities/form', quantity: @quantity %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        <!-- End Modal -->
+
+        <%= link_to 'delete', quantity, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </div>
+    <% end %>
+    <br>
+  </section>
+
+</main>

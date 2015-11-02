@@ -1,0 +1,46 @@
+<div class="jumbotron">
+
+  <h1><%= @quantity.ingredient.try(:name) %>: <%= @quantity.quantity %></h1>
+
+  <!-- Modal -->
+        <div class="modal fade" id='editQuantity_<%= @quantity.id%>' >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Edit quantity</h4>
+              </div>
+              <div class="modal-body">
+                <%= render 'quantities/form', quantity: @quantity %>
+              </div>
+            </div>
+          </div>
+        </div>
+  <!-- End Modal --> 
+
+  <p class="btn-group">
+  <%= link_to 'Edit quantity', "#editQuantity_#{@quantity.id}", 'data-toggle' => 'modal', class: 'btn btn-success btn-lg' %>
+
+    <%= link_to 'Delete', @quantity, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-success btn-lg' %>
+    <%= link_to 'Back', quantities_path, class: 'btn btn-default btn-lg' %>
+  </p>
+</div>
+
+<%# @recipes = @quantity.recipes %>
+
+<%#= render 'recipes/recipes', recipe: @recipes %>
+
+
+<main class="container">
+  <section class="row">
+    <h1>Recipe: <%= @quantity.recipe.try(:title) %></h1>
+  </section>
+<!--   <section class="row">
+    <div class="col-sm-6">
+      <%#= link_to recipe.title, recipe %>
+    </div>
+  </section> -->
+</main> 
+
+
+
