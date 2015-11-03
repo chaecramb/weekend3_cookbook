@@ -1,4 +1,7 @@
 class IngredientsController < ApplicationController
+
+  load_and_authorize_resource
+
   def index
     @ingredients = Ingredient.all
     @ingredient = Ingredient.new
@@ -9,7 +12,7 @@ class IngredientsController < ApplicationController
   end
 
   def create
-    Ingredient.create(category_params) unless Ingredient.find_by(category_params)
+    Ingredient.create(ingredient_params) unless Ingredient.find_by(ingredient_params)
     redirect_to(ingredients_path)
   end
 
@@ -28,13 +31,12 @@ class IngredientsController < ApplicationController
 
   def update
     ingredient = Ingredient.find(params[:id])
-    ingredient.update(category_params)
+    ingredient.update(ingredient_params)
     redirect_to ingredient
   end
 
   private
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def category_params
+    def ingredient_params
       params.require(:ingredient).permit(:name)
     end
 end

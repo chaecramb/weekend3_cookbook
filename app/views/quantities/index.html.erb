@@ -1,7 +1,7 @@
 <div class="jumbotron">
   <h1>Quantities</h1>
   <p class="btn-group">
-    <%= link_to 'Add new quantity', "#newQuantity", 'data-toggle' => 'modal', class: 'btn btn-default btn-lg' %>
+    <%= link_to 'Add new quantity', "#newQuantity", 'data-toggle' => 'modal', class: 'btn btn-default btn-lg' if can? :add, @quantity%>
   </p>
 </div>
 
@@ -36,7 +36,7 @@
         <%= quantity.quantity %>
         <%= link_to 'show', quantity %>
 
-        <%= link_to 'edit', "#editQuantity_#{quantity.id}", 'data-toggle' => 'modal' %>
+        <%= link_to 'edit', "#editQuantity_#{quantity.id}", 'data-toggle' => 'modal' if can? :edit, @quantity%>
 
         <!-- Modal -->
               <div class="modal fade" id='editQuantity_<%= quantity.id%>' >
@@ -54,7 +54,7 @@
               </div>
         <!-- End Modal -->
 
-        <%= link_to 'delete', quantity, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <%= link_to 'delete', quantity, method: :delete, data: { confirm: 'Are you sure?' } if can? :delete, @quantity%>
       </div>
     <% end %>
     <br>

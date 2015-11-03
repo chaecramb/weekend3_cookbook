@@ -1,4 +1,7 @@
 class QuantitiesController < ApplicationController
+
+  load_and_authorize_resource
+
   def index
     @quantities = Quantity.all
     @quantity = Quantity.new
@@ -8,7 +11,7 @@ class QuantitiesController < ApplicationController
     @quantity = Quantity.new  end
 
   def create
-    Quantity.create(category_params) unless Quantity.find_by(category_params)
+    Quantity.create(quantity_params) unless Quantity.find_by(quantity_params)
     redirect_to(quantities_path)
   end
 
@@ -18,7 +21,7 @@ class QuantitiesController < ApplicationController
 
   def update
     quantity = Quantity.find(params[:id])
-    quantity.update(category_params)
+    quantity.update(quantity_params)
     redirect_to quantity
   end
 
@@ -28,7 +31,7 @@ class QuantitiesController < ApplicationController
   end
 
   private
-    def category_params
+    def quantity_params
       params.require(:quantity).permit(:quantity, :ingredient_id, :recipe_id)
     end
 
