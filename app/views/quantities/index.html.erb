@@ -28,7 +28,7 @@
   </section>
   <section class="row">
     <% @quantities.order("lower(quantity) ASC").each do |quantity| %>
-      <div class="col-sm-4">
+      <div class="col-sm-4 quantity-item">
         <% @quantity = quantity %>
         <%= @quantity.recipe.try(:title) %>
         <br>
