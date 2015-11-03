@@ -114,5 +114,5 @@ Quantity.create(recipe_id: 8, ingredient_id: 4, quantity: '4')
 Quantity.create(recipe_id: 8, ingredient_id: 12, quantity: '200g')
 Quantity.create(recipe_id: 8, ingredient_id: 4, quantity: '50g')
 
-
+User.create(name: 'admin', role: 'admin', email: 'bigdog@cookbook.com', password: 'password')
 

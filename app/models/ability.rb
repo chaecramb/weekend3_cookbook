@@ -6,11 +6,11 @@ class Ability
     
     if user.role? 'admin'
         can :manage, :all
+    elsif user.role? 'user'
+      can :read, :all
+      can :add, :all
     else
-        can :read, Recipe
-        can :read, Ingredient
-        can :read, Quantity
-        can :read, Category
+        can :read, :all
     end
   end
 end
