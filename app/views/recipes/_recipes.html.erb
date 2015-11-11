@@ -14,7 +14,6 @@
     <% @recipes.each do |recipe| %>
     <div class="col-sm-4 recipe-container">
    <% @recipe = recipe %>
-      <%#= recipe.title %>
       <div class="btn-container">
       <%= link_to "#{recipe.title}", recipe, class: 'btn btn-default btn-lg' %>
       </div>
@@ -32,7 +31,7 @@
       <% end %>
       <% end %>
       </div>
-      <%= link_to image_tag(recipe.image, class: 'recipe-image'), recipe %>
+      <%= link_to image_tag(@recipe.recipe_image.thumb.url, class: 'recipe-image'), recipe %>
 
 <!-- Modal -->
       <div class="modal fade" id="editRecipe_<%= recipe.id%>" >

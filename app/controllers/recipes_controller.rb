@@ -45,15 +45,8 @@ class RecipesController < ApplicationController
       @recipe.ingredients << Ingredient.find_by(name: ingredient_name)
     end
 
-    respond_to do |format|
-      if @recipe.update(recipe_params)
-        format.html { redirect_to @recipe, notice: 'Recipe was successfully updated.' }
-        format.json { render :show, status: :ok, location: @recipe }
-      else
-        format.html { render :edit }
-        format.json { render json: @recipe.errors, status: :unprocessable_entity }
-      end
-    end
+    @recipe.update(recipe_params)
+    redirect_to @recipe
   end
 
   # DELETE /recipes/1
@@ -74,6 +67,6 @@ class RecipesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def recipe_params
-      params.require(:recipe).permit(:title, :instructions, :published_on, :category_id, :image)
+      params.require(:recipe).permit(:title, :instructions, :published_on, :category_id, :image, :recipe_image)
     end
 end

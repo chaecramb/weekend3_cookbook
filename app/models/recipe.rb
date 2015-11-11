@@ -1,6 +1,8 @@
 class Recipe < ActiveRecord::Base
   include Filterable
 
+  mount_uploader :recipe_image, RecipeImageUploader
+
   belongs_to :category
   has_many :quantities
   has_many :ingredients, through: :quantities

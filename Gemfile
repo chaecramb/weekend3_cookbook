@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'rmagick'
+gem 'carrierwave'
 gem 'devise'
 gem 'cancancan', '~> 1.10'
 gem "twitter-bootstrap-rails"

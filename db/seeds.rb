@@ -12,57 +12,57 @@ Recipe.create([
     :title         => "Porridge",
     :instructions  => "Get oats, get bowl, get milk, heat.\nAdd apples.",
     :published_on  => DateTime.new(2015,10,30),
-    :category_id   => 1,
-    :image         => "http://nourishedkitchen.com/wp-content/uploads/2012/02/porridge-featured.jpg"
+    :category_id   => 1
+    # :image         => "http://nourishedkitchen.com/wp-content/uploads/2012/02/porridge-featured.jpg"
   },
   {
     :title         => "Scrambled eggs",
     :instructions  => "Crack eggs in bowl.\nHeat.",
     :published_on  => DateTime.new(2015,10,30),
-    :category_id   => 1,
-    :image         => "http://vitalfarms.com/wp-content/uploads/2014/02/scrambled-eggs.jpg"
+    :category_id   => 1
+    # :image         => "http://vitalfarms.com/wp-content/uploads/2014/02/scrambled-eggs.jpg"
   },
   {
     :title         => "Salad",
     :instructions  => "Put leaves, tomatoes, cucumber and apples in bowl.\nEat.",
     :published_on  => DateTime.new(2015,10,30),
-    :category_id   => 2,
-    :image         => "https://upload.wikimedia.org/wikipedia/commons/a/a8/Salad_platter02_crop.jpg"
+    :category_id   => 2
+    # :image         => "https://upload.wikimedia.org/wikipedia/commons/a/a8/Salad_platter02_crop.jpg"
   },
   {
     :title         => "Macoroni cheese",
     :instructions  => "Cheese, pasta, heat.\nYum.",
     :published_on  => DateTime.new(2015,10,30),
-    :category_id   => 2,
-    :image         => "http://images.sweetauthoring.com/recipe/38659_593.jpg"
+    :category_id   => 2
+    # :image         => "http://images.sweetauthoring.com/recipe/38659_593.jpg"
   },
   {
     :title         => "Pumpkin pie",
     :instructions  => "Bake pumpkins in pie",
     :published_on  => DateTime.new(2015,10,30),
-    :category_id   => 3,
-    :image         => "http://images.edge-generalmills.com/8a040ff8-fb39-48a2-ba4b-fa73f199bc2f.jpg"
+    :category_id   => 3
+    # :image         => "http://images.edge-generalmills.com/8a040ff8-fb39-48a2-ba4b-fa73f199bc2f.jpg"
   },
   {
     :title         => "Carbonara",
     :instructions  => "Heat pasta with eggs, cheese, and bacon",
     :published_on  => DateTime.new(2015,10,30),
-    :category_id   => 3,
-    :image         => "http://www.foodandtravelfun.com/wp-content/uploads/2015/04/pasta-carbonara.jpg"
+    :category_id   => 3
+    # :image         => "http://www.foodandtravelfun.com/wp-content/uploads/2015/04/pasta-carbonara.jpg"
   },
   {
     :title         => "Apple pie",
     :instructions  => "Puts apples in pie.\nHeat.",
     :published_on  => DateTime.new(2015,10,30),
-    :category_id   => 4,
-    :image         => "http://images.edge-generalmills.com/b89a36f2-7994-4560-9ad6-085fda9163f0.jpg"
+    :category_id   => 4
+    # :image         => "http://images.edge-generalmills.com/b89a36f2-7994-4560-9ad6-085fda9163f0.jpg"
   },
   {
     :title         => "Apple crumble",
     :instructions  => "Sugar and apples, top with biscuit and oats",
     :published_on  => DateTime.new(2015,10,30),
-    :category_id   => 4,
-    :image         => "http://ichef.bbci.co.uk/food/ic/food_16x9_608/recipes/applecrumble_89166_16x9.jpg"
+    :category_id   => 4
+    # :image         => "http://ichef.bbci.co.uk/food/ic/food_16x9_608/recipes/applecrumble_89166_16x9.jpg"
   }
 ])
 
@@ -116,3 +116,38 @@ Quantity.create(recipe_id: 8, ingredient_id: 4, quantity: '50g')
 
 User.create(name: 'admin', role: 'admin', email: 'bigdog@cookbook.com', password: 'password')
 
+# pizza.recipe_image = Rails.root.join("db/images/pizza.jpg").open
+# pizza.save
+
+porridge = Recipe.first
+scrambled_eggs = Recipe.first(2).last
+salad = Recipe.first(3).last
+macoroni = Recipe.first(4).last
+pumpkin_pie = Recipe.first(5).last
+carbonara = Recipe.first(6).last
+apple_pie = Recipe.first(7).last
+apple_crumble = Recipe.last
+
+porridge.recipe_image = Rails.root.join("db/images/porridge.png").open
+porridge.save
+
+scrambled_eggs.recipe_image = Rails.root.join("db/images/scrambled-eggs.jpg").open
+scrambled_eggs.save
+
+salad.recipe_image = Rails.root.join("db/images/salad.jpg").open
+salad.save
+
+macoroni.recipe_image = Rails.root.join("db/images/macaroni.jpg").open
+macoroni.save
+
+pumpkin_pie.recipe_image = Rails.root.join("db/images/pumpkin_pie.jpg").open
+pumpkin_pie.save
+
+carbonara.recipe_image = Rails.root.join("db/images/pasta-carbonara.jpg").open
+carbonara.save
+
+apple_pie.recipe_image = Rails.root.join("db/images/apple_pie.jpg").open
+apple_pie.save
+
+apple_crumble.recipe_image = Rails.root.join("db/images/apple_crumble.jpg").open
+apple_crumble.save
